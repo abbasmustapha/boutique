@@ -26,4 +26,7 @@ public class UserEntity implements Serializable {
     )
     private List<RoleEntity> roles;
 
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private UserProfile profile;
+
 }
