@@ -3,7 +3,9 @@ package com.mab.boutique.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "factures")
@@ -12,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class FactureEntity {
+public class FactureEntity implements Serializable {
 
     @Id
     @GeneratedValue
@@ -25,6 +27,9 @@ public class FactureEntity {
     //
     @ManyToOne
     private ClientEntity client;
+
+    @OneToMany(mappedBy = "facture",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<LigneFactureEntity> lignefactures;
 
 
 }
