@@ -32,7 +32,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientResponseDto findById(Integer id) {
-        ClientEntity clientEntity = clientDao.findById(id).orElseThrow(()->new RuntimeException("Client not found"));
+        ClientEntity clientEntity = clientDao.findById(id).orElseThrow(()->new RuntimeException("Client " + id +" not found"));
         return modelMapper.map(clientEntity,ClientResponseDto.class);
     }
 
