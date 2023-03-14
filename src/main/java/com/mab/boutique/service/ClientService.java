@@ -2,6 +2,9 @@ package com.mab.boutique.service;
 
 import com.mab.boutique.dto.ClientRequestDto;
 import com.mab.boutique.dto.ClientResponseDto;
+import javassist.NotFoundException;
+
+import java.util.List;
 
 public interface ClientService {
 
@@ -13,5 +16,7 @@ public interface ClientService {
 
     void delete(Integer id);
 
-    ClientResponseDto update(ClientRequestDto clientRequestDto,Integer id);
+    ClientResponseDto update(ClientRequestDto clientRequestDto,Integer id) throws NotFoundException;
+
+    List<ClientResponseDto> findAll();
 }
